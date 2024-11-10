@@ -311,7 +311,7 @@ int main()
 	printf("Waiting for CS:S to start...");
 	while (1)
 	{
-		processID = GetPIDByName("hl2.exe");
+		processID = GetPIDByName("css.exe");
 		if (processID) break;
 		Sleep(1000);
 	}
@@ -325,7 +325,7 @@ int main()
 		Sleep(1000);
 	}
 
-	DWORD pHL = (DWORD)GetModuleHandleExtern(processID, "hl2.exe");
+	DWORD pHL = (DWORD)GetModuleHandleExtern(processID, "css.exe");
 	DWORD* pCmdLine = (DWORD*)(FindPatternEx(g_hProcess, pHL, 0x4000, (PBYTE)"\x85\xC0\x79\x08\x6A\x08", "xxxxxx") - 0x13);
 	char* cmdLine = new char[255];
 	ReadProcessMemory(g_hProcess, pCmdLine, &pCmdLine, sizeof(DWORD), NULL);
